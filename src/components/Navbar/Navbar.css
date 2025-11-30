@@ -1,0 +1,71 @@
+.navbar {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.sagicin {
+  margin-left: 2rem;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar a {
+  color: aliceblue;
+}
+
+#mainNav {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  font-size: larger;
+}
+
+#hakkimda {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#hakkimda:hover {
+  background-color: rgb(88, 84, 92);
+  transform: scale(1.05);
+}
+
+#yaptiklarim {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#yaptiklarim:hover {
+  background-color: rgb(88, 84, 92);
+  transform: scale(1.05);
+}
+
+#iletisim {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#iletisim:hover {
+  background-color: rgb(88, 84, 92);
+  transform: scale(1.05);
+}

@@ -1,0 +1,36 @@
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 20%;
+}
+
+.fa-whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.fa-github {
+  background: #333333;
+  color: white;
+}
+
+.fa-instagram {
+  background: linear-gradient(#405de6, #c13584, #f56040);
+  color: white;
+}
