@@ -14,16 +14,20 @@ function App() {
   return (
     <>
       <Video />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="hakkimda" element={<About />} />
-        <Route path="portfolyo" element={<Portfolio />} />
-        <Route path="portfolyo/qrgenerator" element={<QRGenerator />} />
-        <Route path="portfolyo/weatherapp" element={<Weather />} />
-        <Route path="iletisim" element={<Contact />} />
-      </Routes>
-      <Footer />
+      <div className="app-content">
+        <Navbar />
+        <div className="app-inner">
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="hakkimda" element={<About />} />
+            <Route path="portfolyo" element={<Portfolio />} />
+            <Route path="portfolyo/qrgenerator" element={<QRGenerator />} />
+            <Route path="portfolyo/weatherapp" element={<Weather />} />
+            <Route path="iletisim" element={<Contact />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </>
   );
 }

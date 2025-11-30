@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Portfolio() {
   return (
-    <>
+    <div className="all">
       <p id="portfolyo">Projelerim</p>
       <div className="portfolioContainer">
         <div className="qrGenerator">
@@ -29,12 +29,12 @@ function Portfolio() {
           <p>API kullanarak hava durumu bilgilerini gösteren uygulama.</p>
         </div>
 
-        <div className="calculator">
-          <h3>Hesap Makinesi</h3>
-          <p>Temel aritmetik işlemlerini yapabilen bir hesap makinesi.</p>
+        <div className="spotifyClone">
+          <h3>Frontend Spotify</h3>
+          <p>Spotify ana sayfasını Frontend ile kopyalamak </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,8 @@
 .footer {
   width: 100%;
   text-align: center;
+  margin-top: auto; /* iç akışta alta it */
+  z-index: 999;
 }
 .footer .container {
   max-width: 1200px;
