@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Loading.css";
-import { useState } from "react";
+import useCountDown from "../CountDown/CountDown";
 
 const Loading = () => {
-  const [visible, setVisible] = React.useState(true);
+  const { secondsLeft, start } = useCountDown();
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    start(5);
+  }, []);
+
+  useEffect(() => {
+    if (secondsLeft === 0) {
+      setVisible(false);
+    }
+  }, [secondsLeft]);
+
   if (!visible) return null;
+
   return (
     <div className="loadingContainer">
-      <div className="text"></div>
+      <h1 className="text" data-text="Kişisel Web Siteme Hoş Geldiniz">
+        Kişisel Web Siteme Hoş Geldiniz
+      </h1>
+
       <div className="rain"></div>
-      <button className="devamButton" onClick={() => setVisible(false)}>
-        Devam Etmek İçin Butona Tıklayabilirsiniz.
-      </button>
+
+      <h2 className="text" data-text={`Geri Sayım: ${secondsLeft}`}>
+        Geri Sayım: {secondsLeft}
+      </h2>
     </div>
   );
 };
