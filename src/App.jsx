@@ -9,10 +9,12 @@ import Video from "./components/backgroundvideo/video";
 import QRGenerator from "./components/Portfolio/things/qr/QRGenerator";
 import Weather from "./components/Portfolio/things/weatherapp/Weather";
 import Footer from "./components/Footer/Footer";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   return (
     <>
+      <Loading />
       <Video />
       <div className="app-content">
         <Navbar />
