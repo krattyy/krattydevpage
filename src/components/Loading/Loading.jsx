@@ -7,7 +7,7 @@ const Loading = () => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    start(5);
+    start(3);
   }, []);
 
   useEffect(() => {

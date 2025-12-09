@@ -52,3 +52,9 @@ a {
   text-align: center;
   color: tomato;
 }
+
+@media (max-width: 768px) {
+  .all {
+    margin-top: 100px;
+  }
+}

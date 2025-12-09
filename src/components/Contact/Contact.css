@@ -35,3 +35,25 @@
   background: linear-gradient(#405de6, #c13584, #f56040);
   color: white;
 }
+
+@media (max-width: 992px) {
+  .fa {
+    font-size: 30px;
+    width: 50px;
+    padding: 20px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fa {
+    font-size: 25px;
+    width: 40px;
+    padding: 15px;
+    margin: 8px;
+  }
+
+  .icons {
+    margin-top: 275px;
+  }
+}

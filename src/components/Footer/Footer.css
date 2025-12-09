@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
   text-align: center;
-  margin-top: auto; /* iç akışta alta it */
+  margin-top: auto;
   z-index: 999;
 }
 .footer .container {
@@ -11,4 +11,24 @@
 .footer a {
   color: inherit;
   text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer .container {
+    padding: 0 20px;
+  }
 }

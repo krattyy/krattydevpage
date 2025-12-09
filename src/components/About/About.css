@@ -22,11 +22,13 @@
   text-align: center;
   margin: 50px 0;
 }
+
 #pr1,
 #pr3 {
   text-align: center;
   margin-bottom: 100px;
 }
+
 #fotoparagraf {
   display: flex;
   align-items: center;
@@ -34,22 +36,29 @@
   margin-top: 50px;
   gap: 100px;
 }
+
 #pr2 {
   text-align: right;
 }
+
 #Selfie {
   display: block;
   margin-left: auto;
   border-radius: 20%;
   box-shadow: 3px 3px 10px gray;
+  max-width: 100%; /* taşmayı engelle */
+  height: auto;
 }
+
 #müzik {
   display: flex;
   justify-content: space-between;
   gap: 30px;
   align-items: center;
   margin-top: 25px;
+  flex-wrap: wrap;
 }
+
 #text {
   max-width: 300px;
   text-align: center;
@@ -62,6 +71,7 @@
   align-items: center;
   gap: 20px;
   margin-top: 100px;
+  flex-wrap: wrap;
 }
 
 .cv {
@@ -80,35 +90,113 @@
   color: white;
 }
 
-.egitim {
-  text-align: left;
-  display: flex;
-
-  color: white;
-}
-
-.yetenekler {
-  text-align: left;
-  display: flex;
-
-  color: white;
-}
-
-.diller {
-  text-align: left;
-  display: flex;
-}
-
-.deneyimler {
-  text-align: left;
-  display: flex;
-
-  color: white;
-}
-
+.egitim,
+.yetenekler,
+.diller,
+.deneyimler,
 .kurslar {
   text-align: left;
   display: flex;
-
   color: white;
+}
+
+/* ---------------------- */
+/*   RESPONSIVE KISIM     */
+/* ---------------------- */
+
+/* Tablet ve altı */
+@media (max-width: 992px) {
+  .aboutGlass,
+  .cv {
+    margin-top: 40px;
+    padding: 20px;
+  }
+
+  #fotoparagraf {
+    gap: 40px;
+  }
+
+  #pr2 {
+    text-align: center;
+  }
+
+  #text {
+    max-width: 100%;
+  }
+}
+
+/* Telefon boyutu */
+@media (max-width: 768px) {
+  #fotoparagraf {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  #Selfie {
+    margin: 0 auto;
+    width: 70%;
+    max-width: 260px;
+  }
+
+  #müzik {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .aboutPart {
+    padding: 0 16px;
+  }
+
+  #header {
+    margin: 30px 0;
+  }
+
+  .egitim,
+  .yetenekler,
+  .diller,
+  .deneyimler,
+  .kurslar {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 8px;
+  }
+}
+
+/* Daha küçük ekranlar (çok küçük telefonlar) */
+@media (max-width: 480px) {
+  .aboutGlass,
+  .cv {
+    padding: 16px;
+  }
+
+  #fotoparagraf {
+    margin-top: 30px;
+  }
+
+  .container {
+    gap: 12px;
+  }
+
+  #Selfie {
+    width: 80%;
+  }
+}
+
+@media (max-width: 390px) {
+  #Selfie {
+    width: 90%;
+  }
+  .all {
+    justify-content: center;
+    align-items: center;
+  }
 }

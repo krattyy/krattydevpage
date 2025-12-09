@@ -24,7 +24,12 @@ export default function Hakkimda() {
           Developer olmak. Bu yüzden HTML, CSS, Javascript ve React gibi
           teknolojiler üzerinde yoğunlaşıyorum. Fullstack kurs almamdan kaynaklı
           Back-End tarafında da Express.js ile az da olsa bir bilgim var ancak
-          asıl hedefim Front-End tarafında uzmanlaşmak.
+          asıl hedefim Front-End tarafında uzmanlaşmak. Yalan söylemeyi sevmem,
+          çalışmalarımı daha da hızlandırmak ve pratik olması adına yapay zekayı
+          kendime bir hoca gibi kullanıyor, takıldığım yerlerde kendisinden
+          fikir ve yardım alıyorum. Bazen o bana yardım ediyor, bazen onun
+          yardımı yeterli olmazsa kendim sorunun üzerine yoğunlaşarak
+          düzeltiyorum.
         </p>
 
         <div id="fotoparagraf">

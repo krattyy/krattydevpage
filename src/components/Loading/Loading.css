@@ -77,3 +77,9 @@ body {
     transform: translate(5px, 5px);
   }
 }
+
+@media (max-width: 968px) {
+  .text {
+    font-size: 40px;
+  }
+}

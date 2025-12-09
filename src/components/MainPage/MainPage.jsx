@@ -7,8 +7,8 @@ export default function MainPage() {
       <div className="mainPart">
         <div className="mainGlassBlur">
           <p>
-            Merhaba, ben Tuna Enes Kızılırmak. Web geliştiricisi ve tasarım
-            meraklısıyım.
+            Merhaba, ben Tuna Enes Kızılırmak. Web geliştiricisi olmak isteyen
+            ve tasarıma meraklı birisiyim.
           </p>
           <p>
             Kendimi tanıtmak için oluşturduğum bu web sitesinde, projelerimi,
