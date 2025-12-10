@@ -60,7 +60,7 @@ export default function Weather() {
   };
 
   useEffect(() => {
-    search("Moscow");
+    search("Ankara");
   }, []);
 
   return (
