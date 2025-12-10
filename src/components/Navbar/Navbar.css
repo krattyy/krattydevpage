@@ -10,6 +10,8 @@
   left: 0;
   right: 0;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
 }
 
 .sagicin {
@@ -20,52 +22,77 @@
 
 .navbar a {
   color: aliceblue;
+  text-decoration: none;
 }
 
-#mainNav {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-  font-size: larger;
-}
-
-#hakkimda {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-}
-
-#hakkimda:hover {
-  background-color: rgb(88, 84, 92);
-  transform: scale(1.05);
-}
-
-#yaptiklarim {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  cursor: pointer;
-}
-
-#yaptiklarim:hover {
-  background-color: rgb(88, 84, 92);
-  transform: scale(1.05);
-}
-
+#mainNav,
+#hakkimda,
+#yaptiklarim,
 #iletisim {
   display: inline-block;
   padding: 5px 15px;
   border-radius: 12px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  font-size: larger;
 }
 
+#hakkimda:hover,
+#yaptiklarim:hover,
 #iletisim:hover {
   background-color: rgb(88, 84, 92);
   transform: scale(1.05);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 250px;
+  height: 100vh;
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100px;
+  transition: 0.4s ease-in-out;
+  z-index: 999;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  transition: 0.3s;
+}
+
+.sidebar-link:hover {
+  color: #aaa;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .sagicin {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
 }

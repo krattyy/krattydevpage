@@ -1,94 +1,55 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Navbar() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const closeSidebar = () => {
-    setIsSidebarOpen(false);
+    setSidebarOpen(!sidebarOpen);
   };
 
   return (
-    <>
+    <div>
       <nav className="navbar">
-        <Link
-          to="/"
-          id="mainNav"
-          className="cursor point"
-          onClick={closeSidebar}
-        >
+        <Link to="/" id="mainNav" className="cursor point">
           KrattyDEV
         </Link>
 
-        {/* Desktop linklerinin olduğu kısım */}
         <div className="sagicin">
           <Link to="/hakkimda" id="hakkimda" className="cursor point">
             Hakkımda
           </Link>
-
           <Link to="/portfolyo" id="yaptiklarim" className="cursor point">
             Portfolyo
           </Link>
-
           <Link to="/iletisim" id="iletisim" className="cursor point">
             İletişim
           </Link>
         </div>
 
-        {/* Burger butonu BURADA olsun */}
-        <button className="menu-button" onClick={toggleSidebar}>
-          {isSidebarOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+        <div className="burger" onClick={toggleSidebar}>
+          {sidebarOpen ? (
+            <FiX size={30} color="white" />
+          ) : (
+            <GiHamburgerMenu size={30} color="white" />
+          )}
+        </div>
       </nav>
 
-      {isSidebarOpen && (
-        <nav className="sidebar">
-          <Link
-            to="/"
-            id="mainSide"
-            className="cursor point"
-            onClick={closeSidebar}
-          >
-            KrattyDEV
-          </Link>
-
-          <div className="sidebarLinks">
-            <Link
-              to="/hakkimda"
-              id="hakkimdaSide"
-              className="cursor point"
-              onClick={closeSidebar}
-            >
-              Hakkımda
-            </Link>
-
-            <Link
-              to="/portfolyo"
-              id="yaptiklarimSide"
-              className="cursor point"
-              onClick={closeSidebar}
-            >
-              Portfolyo
-            </Link>
-
-            <Link
-              to="/iletisim"
-              id="iletisimSide"
-              className="cursor point"
-              onClick={closeSidebar}
-            >
-              İletişim
-            </Link>
-          </div>
-        </nav>
-      )}
-    </>
+      <div className={sidebarOpen ? "sidebar active" : "sidebar"}>
+        <Link to="/hakkimda" onClick={toggleSidebar} className="sidebar-link">
+          Hakkımda
+        </Link>
+        <Link to="/portfolyo" onClick={toggleSidebar} className="sidebar-link">
+          Portfolyo
+        </Link>
+        <Link to="/iletisim" onClick={toggleSidebar} className="sidebar-link">
+          İletişim
+        </Link>
+      </div>
+    </div>
   );
 }
