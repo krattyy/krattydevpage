@@ -50,19 +50,35 @@
   height: auto;
 }
 
-#müzik {
+#muzik {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Dağınık durmaması için center yaptık */
   gap: 30px;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 40px; /* Container ile çakışmaması için biraz boşluk */
   flex-wrap: wrap;
+  width: 100%;
+}
+#left-iframe,
+#right-iframe {
+  flex: 0 0 auto; /* Boyutlarını korusun */
+  width: 300px;
+  max-width: 100%; /* Telefondan taşmaması için */
+  display: flex;
+  justify-content: center;
+}
+
+iframe {
+  width: 100%;
+  max-width: 300px; /* Maksimum genişlik */
 }
 
 #text {
-  max-width: 300px;
+  max-width: 400px;
   text-align: center;
-  flex: 1;
+  flex: 1; /* Boş alanı kaplasın */
+  min-width: 250px; /* Çok küçülüp ezilmesin */
+  padding: 0 10px;
 }
 
 .container {
@@ -113,7 +129,7 @@
   }
 
   #fotoparagraf {
-    gap: 40px;
+    gap: 20px;
   }
 
   #pr2 {
@@ -122,6 +138,9 @@
 
   #text {
     max-width: 100%;
+  }
+  #muzik {
+    gap: 20px;
   }
 }
 
@@ -141,9 +160,21 @@
   }
 
   #müzik {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: column; /* Alt alta diz */
+    gap: 30px;
+  }
+  #text {
+    order: -1; /* SİHİRLİ DOKUNUŞ: Metni en başa alır */
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 100%;
+  }
+  #left-iframe,
+  #right-iframe {
+    width: 100%; /* Mobilde tam genişlik */
+  }
+  iframe {
+    width: 100%; /* Iframe mobilde bulunduğu alanı doldursun */
   }
 
   .container {
