@@ -52,32 +52,32 @@
 
 #muzik {
   display: flex;
-  justify-content: center; /* Dağınık durmaması için center yaptık */
+  justify-content: center;
   gap: 30px;
   align-items: center;
-  margin-top: 40px; /* Container ile çakışmaması için biraz boşluk */
+  margin-top: 40px;
   flex-wrap: wrap;
   width: 100%;
 }
 #left-iframe,
 #right-iframe {
-  flex: 0 0 auto; /* Boyutlarını korusun */
+  flex: 0 0 auto;
   width: 300px;
-  max-width: 100%; /* Telefondan taşmaması için */
+  max-width: 100%;
   display: flex;
   justify-content: center;
 }
 
 iframe {
   width: 100%;
-  max-width: 300px; /* Maksimum genişlik */
+  max-width: 300px;
 }
 
 #text {
   max-width: 400px;
   text-align: center;
-  flex: 1; /* Boş alanı kaplasın */
-  min-width: 250px; /* Çok küçülüp ezilmesin */
+  flex: 1;
+  min-width: 250px;
   padding: 0 10px;
 }
 
@@ -116,11 +116,6 @@ iframe {
   color: white;
 }
 
-/* ---------------------- */
-/*   RESPONSIVE KISIM     */
-/* ---------------------- */
-
-/* Tablet ve altı */
 @media (max-width: 992px) {
   .aboutGlass,
   .cv {
@@ -144,7 +139,6 @@ iframe {
   }
 }
 
-/* Telefon boyutu */
 @media (max-width: 768px) {
   #fotoparagraf {
     flex-direction: column;
@@ -160,21 +154,21 @@ iframe {
   }
 
   #müzik {
-    flex-direction: column; /* Alt alta diz */
+    flex-direction: column;
     gap: 30px;
   }
   #text {
-    order: -1; /* SİHİRLİ DOKUNUŞ: Metni en başa alır */
+    order: -1;
     margin-bottom: 10px;
     width: 100%;
     max-width: 100%;
   }
   #left-iframe,
   #right-iframe {
-    width: 100%; /* Mobilde tam genişlik */
+    width: 100%;
   }
   iframe {
-    width: 100%; /* Iframe mobilde bulunduğu alanı doldursun */
+    width: 100%;
   }
 
   .container {
@@ -202,7 +196,6 @@ iframe {
   }
 }
 
-/* Daha küçük ekranlar (çok küçük telefonlar) */
 @media (max-width: 480px) {
   .aboutGlass,
   .cv {
