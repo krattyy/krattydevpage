@@ -10,13 +10,11 @@ import QRGenerator from "./components/Portfolio/things/qr/QRGenerator";
 import Weather from "./components/Portfolio/things/weatherapp/Weather";
 import Footer from "./components/Footer/Footer";
 import Loading from "./components/Loading/Loading";
-import PostLoading from "./components/Post-Loading/PostLoading";
 
 function App() {
   return (
     <>
       <Loading />
-      <PostLoading />
       <Video />
       <div className="app-content">
         <Navbar />
