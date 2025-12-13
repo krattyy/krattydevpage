@@ -1,59 +1,75 @@
 .icons {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 350px;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 40vh;
+  width: 100%;
 }
 
 .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 125px;
+  height: 125px;
+  font-size: 75px;
+
   text-decoration: none;
-  margin: 10px;
+  border-radius: 25px;
   cursor: pointer;
-  border-radius: 20%;
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fa:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .fa-whatsapp {
   background: #25d366;
-  color: white;
 }
 
 .fa-linkedin {
   background: #0a66c2;
-  color: white;
 }
 
 .fa-github {
   background: #333333;
-  color: white;
 }
 
 .fa-instagram {
-  background: linear-gradient(#405de6, #c13584, #f56040);
-  color: white;
+  background: linear-gradient(45deg, #405de6, #c13584, #f56040);
 }
 
 @media (max-width: 992px) {
+  .icons {
+    margin-top: 40vh;
+    gap: 15px;
+  }
+
   .fa {
-    font-size: 30px;
-    width: 50px;
-    padding: 20px;
-    margin: 10px;
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    border-radius: 25px;
   }
 }
 
-@media (max-width: 768px) {
-  .fa {
-    font-size: 25px;
-    width: 40px;
-    padding: 15px;
-    margin: 8px;
+@media (max-width: 480px) {
+  .icons {
+    margin-top: 40vh;
+    gap: 12px;
   }
 
-  .icons {
-    margin-top: 250px;
+  .fa {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    border-radius: 20px;
   }
 }
