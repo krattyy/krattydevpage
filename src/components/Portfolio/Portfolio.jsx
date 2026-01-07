@@ -30,8 +30,13 @@ function Portfolio() {
         </div>
 
         <div className="spotifyClone">
-          <h3>Frontend Spotify</h3>
-          <p>Spotify ana sayfasını Frontend ile kopyalamak </p>
+          <a href="https://github.com/krattyy/spotify-clone" target="_blank">
+            Frontend Spotify
+          </a>
+          <p>
+            GreatStack isimli Youtube kanalının rehberliğiyle yapılmış Spotify
+            denemesi.{" "}
+          </p>
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ export default function MainPage() {
             Kendimi tanıtmak için oluşturduğum bu web sitesinde, projelerimi,
             becerilerimi ve iletişim bilgilerimi bulabilirsiniz.
           </p>
+          <p>( Site hala geliştirme aşamasındadır.)</p>
         </div>
       </div>
     </>
