@@ -1,46 +1,92 @@
-import React from "react";
-import "./Portfolio.css";
 import { Link } from "react-router-dom";
+import "./portfolio.css";
 
-function Portfolio() {
+const projects = [
+  {
+    title: "ArticQR: QR Generator",
+    description:
+      "Özelleştirilebilir QR kodlar, dinamik kodlar ve tarama analitikleri sunan Android uygulaması.",
+    tags: ["Android", "QR", "Play Store"],
+    to: "https://play.google.com/store/apps/details?id=com.articqr.app",
+    external: true,
+    cta: "Play Store’da aç",
+  },
+  {
+    title: "QR Code Generator",
+    description: "Metinden anında QR kod üreten React aracı.",
+    tags: ["React", "qrcode.react"],
+    to: "/portfolyo/qrgenerator",
+    external: false,
+    cta: "Canlı demo",
+  },
+  {
+    title: "Hava Durumu Uygulaması",
+    description:
+      "OpenWeatherMap API ile şehir bazlı sıcaklık, nem ve rüzgar bilgisi.",
+    tags: ["React", "API"],
+    to: "/portfolyo/weatherapp",
+    external: false,
+    cta: "Canlı demo",
+  },
+  {
+    title: "Frontend Spotify",
+    description:
+      "GreatStack rehberliğiyle yapılmış Spotify arayüz denemesi.",
+    tags: ["React", "UI"],
+    to: "https://github.com/krattyy/spotify-clone",
+    external: true,
+    cta: "GitHub’da aç",
+  },
+];
+
+export default function Portfolio() {
   return (
-    <div className="all">
-      <p id="portfolyo">Projelerim</p>
-      <div className="portfolioContainer">
-        <div className="qrGenerator">
-          <Link
-            to="/portfolyo/qrgenerator"
-            id="qrgenerator"
-            className="cursor-pointer"
-          >
-            QR Code Generator
-          </Link>
-          <p>React ile yapılmış bir QR kod oluşturucu.</p>
-        </div>
+    <section className="portfolio-page fade-up">
+      <header className="page-header">
+        <p className="page-kicker">Portfolyo</p>
+        <h1 className="page-title">Seçili projeler</h1>
+        <p className="page-lead">
+          Öğrenirken ve deneme yaparken ürettiğim uygulamalar.
+        </p>
+      </header>
 
-        <div className="weatherApp">
-          <Link
-            to="/portfolyo/weatherapp"
-            id="weatherapp"
-            className="cursor-pointer"
-          >
-            Hava Durumu Uygulaması
-          </Link>
-          <p>API kullanarak hava durumu bilgilerini gösteren uygulama.</p>
-        </div>
-
-        <div className="spotifyClone">
-          <a href="https://github.com/krattyy/spotify-clone" target="_blank">
-            Frontend Spotify
-          </a>
-          <p>
-            GreatStack isimli Youtube kanalının rehberliğiyle yapılmış Spotify
-            denemesi.{" "}
-          </p>
-        </div>
-      </div>
-    </div>
+      <ul className="project-list">
+        {projects.map((project) => (
+          <li key={project.title} className="project-item">
+            {project.external ? (
+              <a
+                href={project.to}
+                className="project-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ProjectBody project={project} />
+              </a>
+            ) : (
+              <Link to={project.to} className="project-link">
+                <ProjectBody project={project} />
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
-export default Portfolio;
+function ProjectBody({ project }) {
+  return (
+    <>
+      <div className="project-top">
+        <h2>{project.title}</h2>
+        <span className="project-cta">{project.cta} →</span>
+      </div>
+      <p>{project.description}</p>
+      <ul className="project-tags">
+        {project.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    </>
+  );
+}

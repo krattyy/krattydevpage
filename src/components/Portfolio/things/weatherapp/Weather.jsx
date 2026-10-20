@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import "./Weather.css";
 import { FaSearchLocation } from "react-icons/fa";
 import {
@@ -13,93 +14,133 @@ import {
 } from "react-icons/ti";
 import { WiHumidity } from "react-icons/wi";
 
-export default function Weather() {
-  const [weatherData, setWeatherData] = useState(false);
+const iconMap = {
+  "01d": <TiWeatherSunny size={96} color="#d4894a" />,
+  "01n": <TiWeatherSunny size={96} color="#d4894a" />,
+  "02d": <TiWeatherPartlySunny size={96} color="#d4894a" />,
+  "02n": <TiWeatherPartlySunny size={96} color="#d4894a" />,
+  "03d": <TiWeatherCloudy size={96} color="#a89a8a" />,
+  "03n": <TiWeatherCloudy size={96} color="#a89a8a" />,
+  "04d": <TiWeatherCloudy size={96} color="#a89a8a" />,
+  "04n": <TiWeatherCloudy size={96} color="#a89a8a" />,
+  "09d": <TiWeatherShower size={96} color="#7eb6d4" />,
+  "09n": <TiWeatherShower size={96} color="#7eb6d4" />,
+  "10d": <TiWeatherDownpour size={96} color="#5a9ec0" />,
+  "10n": <TiWeatherDownpour size={96} color="#5a9ec0" />,
+  "11d": <TiWeatherStormy size={96} color="#b08d6a" />,
+  "11n": <TiWeatherStormy size={96} color="#b08d6a" />,
+  "13d": <TiWeatherSnow size={96} color="#d8d0c4" />,
+  "13n": <TiWeatherSnow size={96} color="#d8d0c4" />,
+};
 
+export default function Weather() {
+  const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState("");
   const inputRef = useRef();
 
-  const icons = {
-    "01d": <TiWeatherSunny size={120} color="#f39c12" />,
-    "01n": <TiWeatherSunny size={120} color="#f39c12" />,
-    "02d": <TiWeatherPartlySunny size={120} color="#f39c12" />,
-    "02n": <TiWeatherPartlySunny size={120} color="#f39c12" />,
-    "03d": <TiWeatherCloudy size={120} color="#7f8c8d" />,
-    "03n": <TiWeatherCloudy size={120} color="#7f8c8d" />,
-    "04d": <TiWeatherCloudy size={120} color="#7f8c8d" />,
-    "04n": <TiWeatherCloudy size={120} color="#7f8c8d" />,
-    "09d": <TiWeatherShower size={120} color="#3498db" />,
-    "09n": <TiWeatherShower size={120} color="#3498db" />,
-    "10d": <TiWeatherDownpour size={120} color="#2980b9" />,
-    "10n": <TiWeatherDownpour size={120} color="#2980b9" />,
-    "11d": <TiWeatherStormy size={120} color="#8e44ad" />,
-    "11n": <TiWeatherStormy size={120} color="#8e44ad" />,
-    "13d": <TiWeatherSnow size={120} color="#bdc3c7" />,
-    "13n": <TiWeatherSnow size={120} color="#bdc3c7" />,
-  };
-
   const search = async (city) => {
-    if (city === "") {
-      alert("Lütfen bir şehir adı girin.");
+    if (!city?.trim()) {
+      setError("Lütfen bir şehir adı girin.");
+      return;
     }
+
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=tr&appid=${
-        import.meta.env.VITE_WEATHER_API_KEY
-      }`;
+      setError("");
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+        city
+      )}&units=metric&lang=tr&appid=${import.meta.env.VITE_WEATHER_API_KEY}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
-      const icon = icons[data.weather[0].icon] || <TiWeatherSunny size={120} />;
+
+      if (!response.ok) {
+        setError(data.message || "Şehir bulunamadı.");
+        setWeatherData(null);
+        return;
+      }
+
+      const icon =
+        iconMap[data.weather[0].icon] || (
+          <TiWeatherSunny size={96} color="#d4894a" />
+        );
+
       setWeatherData({
         temp: Math.floor(data.main.temp),
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
         location: `${data.name}, ${data.sys.country}`,
-        icon: icon,
+        icon,
       });
-    } catch (error) {}
+    } catch {
+      setError("Veri alınamadı. Daha sonra tekrar deneyin.");
+    }
   };
 
   useEffect(() => {
     search("Ankara");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="weather-app">
-      <h2>Hava Durumu Uygulaması</h2>
-      <p className="deneme">
-        API kullanarak aldığım verilerle istediğiniz lokasyonda hava durumuna
-        bakabilirsiniz.
+    <section className="demo-page weather-page fade-up">
+      <Link to="/portfolyo" className="demo-back">
+        ← Portfolyoya dön
+      </Link>
+      <h1 className="demo-title">Hava Durumu</h1>
+      <p className="demo-lead">
+        OpenWeatherMap API ile istediğiniz şehrin anlık hava durumuna bakın.
       </p>
-      <div className="search-row">
-        <input ref={inputRef} type="text" placeholder="Şehir adı girin" />
-        <button
-          className="search-button"
-          onClick={() => search(inputRef.current.value)}
-        >
-          <FaSearchLocation size={35} />
-        </button>
-      </div>
-      {weatherData.icon}
-      <div className="weather-info">
-        <p className="temperature">{weatherData.temp}°C</p>
-        <h3 className="location">{weatherData.location}</h3>
-      </div>
-      <div className="weather-data">
-        <div className="col">
-          <WiHumidity size={100} />
-          <div>
-            <p>{weatherData.humidity}%</p>
-            <h4>Nem</h4>
-          </div>
+
+      <div className="weather-panel">
+        <div className="search-row">
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Şehir adı girin"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") search(inputRef.current.value);
+            }}
+          />
+          <button
+            type="button"
+            className="search-button"
+            aria-label="Ara"
+            onClick={() => search(inputRef.current.value)}
+          >
+            <FaSearchLocation size={20} />
+          </button>
         </div>
-        <div className="col">
-          <TiWeatherWindy size={100} />
-          <div>
-            <p>{weatherData.windSpeed} Km/s </p>
-            <h4>Rüzgar Hızı</h4>
-          </div>
-        </div>
+
+        {error && <p className="weather-error">{error}</p>}
+
+        {weatherData && (
+          <>
+            <div className="weather-hero">
+              {weatherData.icon}
+              <div>
+                <p className="temperature">{weatherData.temp}°C</p>
+                <h2 className="location">{weatherData.location}</h2>
+              </div>
+            </div>
+
+            <div className="weather-data">
+              <div className="col">
+                <WiHumidity size={42} />
+                <div>
+                  <p>{weatherData.humidity}%</p>
+                  <span>Nem</span>
+                </div>
+              </div>
+              <div className="col">
+                <TiWeatherWindy size={42} />
+                <div>
+                  <p>{weatherData.windSpeed} km/s</p>
+                  <span>Rüzgar</span>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,33 +1,10 @@
 .footer {
-  text-align: center;
+  position: relative;
+  z-index: 1;
   margin-top: auto;
-  z-index: 999;
-}
-.footer .container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.footer a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-@media (max-width: 992px) {
-  .footer {
-    font-size: 14px;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    font-size: 12px;
-    padding: 8px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer .container {
-    padding: 0 20px;
-  }
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }

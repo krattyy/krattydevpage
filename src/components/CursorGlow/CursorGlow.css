@@ -1,0 +1,27 @@
+.cursor-glow {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  --mx: 50%;
+  --my: 40%;
+  background: radial-gradient(
+    520px circle at var(--mx) var(--my),
+    rgba(212, 137, 74, 0.16),
+    transparent 55%
+  );
+  transition: opacity 0.4s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-glow.is-active {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none !important;
+  }
+}

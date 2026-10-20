@@ -1,106 +1,135 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* Sağa sola taşmayı engeller */
-  position: relative; /* Sabitlik kazandırır */
-}
-.navbar {
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 50px;
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(5px);
 }
 
-.sagicin {
-  margin-left: 2rem;
+.navbar {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--nav-height);
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: rgba(20, 18, 16, 0.82);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
 }
 
-.navbar a {
-  color: aliceblue;
-  text-decoration: none;
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  transition: color 0.25s var(--ease);
 }
 
-#mainNav,
-#hakkimda,
-#yaptiklarim,
-#iletisim {
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+.nav-brand:hover {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.45rem 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.98rem;
+  transition: color 0.25s var(--ease);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.15rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text);
+}
+
+.nav-link.active::after,
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text);
   cursor: pointer;
-  font-size: larger;
-}
-
-#hakkimda:hover,
-#yaptiklarim:hover,
-#iletisim:hover {
-  background-color: rgb(88, 84, 92);
-  transform: scale(1.05);
+  z-index: 1002;
 }
 
 .sidebar {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 250px;
+  right: 0;
+  width: min(18rem, 85vw);
   height: 100vh;
-  background-color: rgb(30, 30, 30);
+  padding: calc(var(--nav-height) + 1.5rem) 1.75rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 100px;
-  transition: 0.4s ease-in-out;
-  z-index: 999;
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-  bottom: 0;
-}
-
-.sidebar.active {
-  right: 0;
-}
-
-.sidebar-link {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  margin: 20px 0;
-  transition: 0.3s;
-}
-
-.sidebar-link:hover {
-  color: #aaa;
-}
-
-.burger {
-  display: none;
-  cursor: pointer;
+  gap: 0.5rem;
+  background: var(--bg-elevated);
+  border-left: 1px solid var(--border);
+  transform: translateX(105%);
+  transition: transform 0.35s var(--ease);
   z-index: 1001;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 20px;
-  }
+.sidebar.active {
+  transform: translateX(0);
+}
 
-  .sagicin {
+.sidebar-link {
+  padding: 0.85rem 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  transition: color 0.25s var(--ease);
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  color: var(--accent);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
     display: none;
   }
 
   .burger {
-    display: block;
+    display: inline-flex;
   }
 }

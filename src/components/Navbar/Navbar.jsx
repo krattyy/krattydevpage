@@ -1,55 +1,76 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FiX } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+
+const links = [
+  { to: "/hakkimda", label: "Hakkımda" },
+  { to: "/portfolyo", label: "Portfolyo" },
+  { to: "/iletisim", label: "İletişim" },
+];
 
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
   return (
-    <div>
-      <nav className="navbar">
-        <Link to="/" id="mainNav" className="cursor point">
+    <header className="site-header">
+      <nav className="navbar" aria-label="Ana navigasyon">
+        <Link to="/" className="nav-brand">
           KrattyDEV
         </Link>
 
-        <div className="sagicin">
-          <Link to="/hakkimda" id="hakkimda" className="cursor point">
-            Hakkımda
-          </Link>
-          <Link to="/portfolyo" id="yaptiklarim" className="cursor point">
-            Portfolyo
-          </Link>
-          <Link to="/iletisim" id="iletisim" className="cursor point">
-            İletişim
-          </Link>
+        <div className="nav-links">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
         </div>
 
-        <div className="burger" onClick={toggleSidebar}>
-          {sidebarOpen ? (
-            <FiX size={30} color="white" />
-          ) : (
-            <GiHamburgerMenu size={30} color="white" />
-          )}
-        </div>
+        <button
+          type="button"
+          className="burger"
+          aria-label={sidebarOpen ? "Menüyü kapat" : "Menüyü aç"}
+          aria-expanded={sidebarOpen}
+          onClick={() => setSidebarOpen((open) => !open)}
+        >
+          {sidebarOpen ? <FiX size={26} /> : <GiHamburgerMenu size={26} />}
+        </button>
       </nav>
 
-      <div className={sidebarOpen ? "sidebar active" : "sidebar"}>
-        <Link to="/hakkimda" onClick={toggleSidebar} className="sidebar-link">
-          Hakkımda
-        </Link>
-        <Link to="/portfolyo" onClick={toggleSidebar} className="sidebar-link">
-          Portfolyo
-        </Link>
-        <Link to="/iletisim" onClick={toggleSidebar} className="sidebar-link">
-          İletişim
-        </Link>
+      <div
+        className={sidebarOpen ? "sidebar active" : "sidebar"}
+        aria-hidden={!sidebarOpen}
+      >
+        {links.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              isActive ? "sidebar-link active" : "sidebar-link"
+            }
+            onClick={() => setSidebarOpen(false)}
+          >
+            {link.label}
+          </NavLink>
+        ))}
       </div>
-    </div>
+
+      {sidebarOpen && (
+        <button
+          type="button"
+          className="sidebar-backdrop"
+          aria-label="Menüyü kapat"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+    </header>
   );
 }

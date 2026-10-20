@@ -1,10 +1,13 @@
-import React from "react";
 import "./Footer.css";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
-      <p>Copyright © Tuna Enes Kızılırmak 2025. Tüm hakları saklıdır.</p>
+      <p>
+        © {year} KrattyDEV · Tuna Enes Kızılırmak
+      </p>
     </footer>
   );
 }

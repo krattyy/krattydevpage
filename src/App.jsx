@@ -5,20 +5,19 @@ import MainPage from "./components/MainPage/MainPage";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Contact from "./components/Contact/Contact";
 import { Routes, Route } from "react-router-dom";
-import Video from "./components/backgroundvideo/video";
 import QRGenerator from "./components/Portfolio/things/qr/QRGenerator";
 import Weather from "./components/Portfolio/things/weatherapp/Weather";
 import Footer from "./components/Footer/Footer";
-import Loading from "./components/Loading/Loading";
+import CursorGlow from "./components/CursorGlow/CursorGlow";
 
 function App() {
   return (
     <>
-      <Loading />
-      <Video />
-      <div className="app-content">
+      <div className="app-atmosphere" aria-hidden="true" />
+      <CursorGlow />
+      <div className="app-shell">
         <Navbar />
-        <div className="app-inner">
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="hakkimda" element={<About />} />
@@ -27,7 +26,7 @@ function App() {
             <Route path="portfolyo/weatherapp" element={<Weather />} />
             <Route path="iletisim" element={<Contact />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </>

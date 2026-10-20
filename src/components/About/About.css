@@ -1,174 +1,126 @@
-.aboutPart {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
-  padding-top: 40px;
+.about-page {
+  text-align: left;
+  max-width: 46rem;
 }
 
-.glass-block {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 16px;
-  padding: 30px;
-  margin-bottom: 30px;
-  color: white;
-  transition: transform 0.2s ease-in-out;
+.about-intro,
+.about-split p {
+  color: var(--text-muted);
+  font-size: 1.08rem;
 }
 
-.glass-block:hover {
-  transform: translateY(-3px);
+.about-intro {
+  margin-bottom: 2.5rem;
 }
 
-#header {
-  text-align: center;
-  font-size: 2.5rem;
-  color: white;
-  margin-top: 20px;
+.about-split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 3rem;
 }
 
-#pr1,
-#pr2 {
-  text-align: center;
-  line-height: 1.7;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-#fotoparagraf {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-#Selfie {
-  display: block;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-#muzik {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+.about-photo-wrap {
   width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.5rem;
+  overflow: hidden;
 }
 
-#left-iframe,
-#right-iframe {
-  flex: 0 0 auto;
+.about-photo {
+  width: 100%;
+  height: auto;
+  max-height: 28rem;
+  object-fit: contain;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.cv-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.02em;
+}
+
+.cv-section {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin: 1.5rem 0 0;
+}
+
+.cv-block h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.cv-block ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
-#muzik iframe {
-  width: 300px;
-  height: 300px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  max-width: 100%;
-  aspect-ratio: 1/1;
+.cv-block li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-#text {
-  flex: 1;
-  padding: 0 20px;
-  text-align: center;
-  min-width: 200px;
+.cv-block strong {
+  font-weight: 600;
+  color: var(--text);
 }
 
-#pr3 {
-  text-align: center !important;
-  margin: 0;
-  line-height: 1.7;
-  font-size: 1.1rem;
+.cv-block span {
+  color: var(--text-muted);
+  font-size: 0.98rem;
 }
 
-.cv h3 {
-  margin-top: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  font-size: 1.4rem;
+.cv-block em {
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  opacity: 0.85;
 }
 
-.cv ul {
-  list-style-position: inside;
-  padding-left: 0;
-  margin: 0;
+.plain-list li {
+  color: var(--text-muted);
+  padding-left: 0.9rem;
+  position: relative;
 }
 
-.cv li {
-  margin-bottom: 12px;
-  line-height: 1.5;
-  font-size: 1.05rem;
-}
-
-.aboutGlass,
-.cv {
-  margin-top: 20px;
-}
-
-@media (max-width: 1100px) {
-  #muzik {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  #text {
-    width: 100%;
-    padding: 0;
-  }
-
-  #left-iframe,
-  #right-iframe {
-    width: 100%;
-  }
-}
-
-@media (max-width: 992px) {
-  .glass-block {
-    padding: 24px;
-  }
-
-  #fotoparagraf {
-    gap: 30px;
-  }
+.plain-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 @media (max-width: 768px) {
-  .aboutPart {
-    padding: 0 16px;
-    padding-top: 30px;
+  .about-split,
+  .cv-grid {
+    grid-template-columns: 1fr;
   }
 
-  #fotoparagraf {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 20px;
-  }
-
-  #pr2 {
-    text-align: center;
-  }
-
-  #Selfie {
-    width: 70%;
-    max-width: 300px;
+  .about-photo-wrap {
+    max-width: 20rem;
     margin: 0 auto;
-  }
-
-  #header {
-    font-size: 2rem;
-    margin: 30px 0;
   }
 }
