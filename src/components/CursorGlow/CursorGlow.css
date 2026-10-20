@@ -7,9 +7,9 @@
   --mx: 50%;
   --my: 40%;
   background: radial-gradient(
-    520px circle at var(--mx) var(--my),
-    rgba(212, 137, 74, 0.16),
-    transparent 55%
+    380px circle at var(--mx) var(--my),
+    rgba(212, 137, 74, 0.07),
+    transparent 65%
   );
   transition: opacity 0.4s ease;
 }

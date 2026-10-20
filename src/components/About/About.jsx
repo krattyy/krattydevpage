@@ -10,24 +10,30 @@ export default function About() {
       </header>
 
       <section className="about-intro">
+        <p>2000 yılında Ankara&apos;da doğdum.</p>
         <p>
-          2000 yılında Ankara&apos;da doğdum. Hacettepe Üniversitesi İletişim
-          Fakültesi İletişim Bilimleri bölümünden mezun oldum. Mezun olmadan
-          önce yaptığım stajlarda bölümümle alakalı sektörlerin pek hoşuma
-          gitmediğini fark etmemle beraber kodlama serüvenim başladı. Python ve
-          C# temelleriyle başladım; ardından web geliştirmeye yöneldim. Şu an
-          önceliğim başarılı bir fullstack developer olmak.
+          Hacettepe Üniversitesi İletişim Fakültesi İletişim Bilimleri
+          bölümünden mezun oldum. Stajlarda sektörün bana uymadığını görünce
+          kodlamaya yöneldim.
+        </p>
+        <p>
+          Python ve C# temelleriyle başladım; ardından web geliştirmeye
+          geçtim. Şu an önceliğim başarılı bir fullstack developer olmak.
         </p>
       </section>
 
       <section className="about-split">
-        <p>
-          Boş zamanlarımda oyun oynamayı, film izlemeyi ve arkadaşlarımla vakit
-          geçirmeyi seviyorum. Evime kaçak giren komşu kedisiyle de biraz
-          güreşiyoruz. Arkadaşlarım varsa League of Legends veya Valorant;
-          yalnızsam Skyrim, Witcher 3 gibi RPG&apos;ler — içine dalabileceğim
-          evrenler hoşuma gidiyor.
-        </p>
+        <div className="about-aside-copy">
+          <p>
+            Boş zamanlarımda oyun oynamayı, film izlemeyi ve arkadaşlarımla
+            vakit geçirmeyi seviyorum.
+          </p>
+          <p>
+            Evime kaçak giren komşu kedisiyle de biraz güreşiyoruz. Arkadaşlarla
+            League of Legends veya Valorant; yalnızken Skyrim, Witcher 3 gibi
+            RPG&apos;ler — içine dalabileceğim evrenler hoşuma gidiyor.
+          </p>
+        </div>
         <div className="about-photo-wrap">
           <img
             className="about-photo"
@@ -43,7 +49,7 @@ export default function About() {
         <div className="cv-grid">
           <div className="cv-block">
             <h3>Eğitim</h3>
-            <ul>
+            <ul className="timeline">
               <li>
                 <strong>Hacettepe Üniversitesi</strong>
                 <span>İletişim Fakültesi · İletişim Bilimleri</span>
@@ -59,7 +65,7 @@ export default function About() {
 
           <div className="cv-block">
             <h3>Deneyimler</h3>
-            <ul>
+            <ul className="timeline">
               <li>
                 <strong>OdakGIS</strong>
                 <span>Stajyer Yazılım Geliştirici</span>

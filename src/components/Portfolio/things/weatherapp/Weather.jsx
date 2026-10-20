@@ -36,6 +36,7 @@ const iconMap = {
 export default function Weather() {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
+  const [pulse, setPulse] = useState(false);
   const inputRef = useRef();
 
   const search = async (city) => {
@@ -70,6 +71,8 @@ export default function Weather() {
         location: `${data.name}, ${data.sys.country}`,
         icon,
       });
+      setPulse(true);
+      window.setTimeout(() => setPulse(false), 500);
     } catch {
       setError("Veri alınamadı. Daha sonra tekrar deneyin.");
     }
@@ -87,10 +90,12 @@ export default function Weather() {
       </Link>
       <h1 className="demo-title">Hava Durumu</h1>
       <p className="demo-lead">
-        OpenWeatherMap API ile istediğiniz şehrin anlık hava durumuna bakın.
+        Neden: Harici bir REST API&apos;yi React state ile bağlayıp temiz bir UI
+        sunmayı öğrenmek için yaptım. OpenWeatherMap ile anlık şehir verisi
+        çekiyor.
       </p>
 
-      <div className="weather-panel">
+      <div className={pulse ? "weather-panel pulse" : "weather-panel"}>
         <div className="search-row">
           <input
             ref={inputRef}

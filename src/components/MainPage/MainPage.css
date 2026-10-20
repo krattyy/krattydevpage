@@ -19,6 +19,8 @@
 }
 
 .hero-brand {
+  --px: 0px;
+  --py: 0px;
   font-family: var(--font-display);
   font-size: clamp(3.4rem, 11vw, 6.5rem);
   font-weight: 700;
@@ -26,13 +28,39 @@
   letter-spacing: -0.035em;
   color: var(--text);
   margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  transform: translate3d(var(--px), var(--py), 0);
+  transition: transform 0.35s var(--ease);
+  will-change: transform;
+}
+
+.hero-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.55rem);
+  animation: letter-in 0.55s var(--ease) forwards;
+}
+
+@keyframes letter-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-role {
   font-size: clamp(1.15rem, 2.5vw, 1.4rem);
   font-weight: 500;
   color: var(--text);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.45rem;
+}
+
+.hero-proof {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
 
 .hero-lead {
@@ -60,7 +88,8 @@
     background 0.25s var(--ease),
     color 0.25s var(--ease),
     border-color 0.25s var(--ease),
-    transform 0.25s var(--ease);
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
 }
 
 .btn:hover {
@@ -70,10 +99,12 @@
 .btn-primary {
   background: var(--accent);
   color: #1a120c;
+  box-shadow: 0 0 0 0 rgba(212, 137, 74, 0);
 }
 
 .btn-primary:hover {
   background: #e09a58;
+  box-shadow: 0 8px 24px rgba(212, 137, 74, 0.28);
 }
 
 .btn-ghost {
@@ -85,4 +116,17 @@
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-brand {
+    transform: none;
+    transition: none;
+  }
+
+  .hero-letter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

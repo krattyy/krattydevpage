@@ -3,6 +3,23 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
+  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.weather-panel.pulse {
+  border-color: rgba(212, 137, 74, 0.5);
+  box-shadow: 0 0 0 4px rgba(212, 137, 74, 0.16);
+}
+
+@keyframes weather-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .search-row {
@@ -53,6 +70,7 @@
   align-items: center;
   gap: 1.25rem;
   margin-bottom: 1.5rem;
+  animation: weather-in 0.45s var(--ease);
 }
 
 .temperature {

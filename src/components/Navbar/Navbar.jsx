@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 import { NavLink, Link } from "react-router-dom";
 import { FiX } from "react-icons/fi";
@@ -12,9 +12,17 @@ const links = [
 
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="site-header">
+    <header className={scrolled ? "site-header scrolled" : "site-header"}>
       <nav className="navbar" aria-label="Ana navigasyon">
         <Link to="/" className="nav-brand">
           KrattyDEV

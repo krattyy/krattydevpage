@@ -10,10 +10,22 @@ import Weather from "./components/Portfolio/things/weatherapp/Weather";
 import Footer from "./components/Footer/Footer";
 import CursorGlow from "./components/CursorGlow/CursorGlow";
 
+const particles = Array.from({ length: 14 }, (_, i) => i);
+
 function App() {
   return (
     <>
-      <div className="app-atmosphere" aria-hidden="true" />
+      <div className="app-atmosphere" aria-hidden="true">
+        <div className="ambient-grid" />
+        <span className="ambient-blob ambient-blob-a" />
+        <span className="ambient-blob ambient-blob-b" />
+        <span className="ambient-blob ambient-blob-c" />
+        <div className="ambient-particles">
+          {particles.map((i) => (
+            <span key={i} className={`particle particle-${i}`} />
+          ))}
+        </div>
+      </div>
       <CursorGlow />
       <div className="app-shell">
         <Navbar />

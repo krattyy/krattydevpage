@@ -6,7 +6,18 @@ import "./QRGenerator.css";
 export default function QRGenerator() {
   const [text, setText] = useState("");
   const [qr, setQr] = useState("");
+  const [pulse, setPulse] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
   const previewRef = useRef(null);
+
+  const createQr = () => {
+    const value = text.trim();
+    if (!value) return;
+    setQr(value);
+    setPulse(true);
+    setDownloaded(false);
+    window.setTimeout(() => setPulse(false), 500);
+  };
 
   const downloadPng = () => {
     const svg = previewRef.current?.querySelector("svg");
@@ -35,6 +46,8 @@ export default function QRGenerator() {
       link.download = "qrcode.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
+      setDownloaded(true);
+      window.setTimeout(() => setDownloaded(false), 1800);
     };
 
     img.onerror = () => URL.revokeObjectURL(url);
@@ -48,11 +61,15 @@ export default function QRGenerator() {
       </Link>
       <h1 className="demo-title">QR Code Generator</h1>
       <p className="demo-lead">
-        Bir bağlantı veya metin girin, QR kod anında oluşsun.
+        Neden: Paylaşılabilir QR’ı tarayıcıda hızlı üretmek ve React state /
+        SVG export akışını pratik etmek için yaptım.
       </p>
 
       <div className="qr-panel">
-        <div className="qr-preview" ref={previewRef}>
+        <div
+          className={pulse ? "qr-preview pulse" : "qr-preview"}
+          ref={previewRef}
+        >
           {qr ? (
             <QRCodeSVG
               value={qr}
@@ -73,9 +90,12 @@ export default function QRGenerator() {
             placeholder="https://ornek.com"
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") createQr();
+            }}
           />
           <div className="qr-actions">
-            <button type="button" onClick={() => setQr(text.trim())}>
+            <button type="button" onClick={createQr}>
               Oluştur
             </button>
             <button
@@ -87,6 +107,11 @@ export default function QRGenerator() {
               İndir (PNG)
             </button>
           </div>
+          {downloaded && (
+            <p className="demo-success" role="status">
+              PNG indirildi
+            </p>
+          )}
         </div>
       </div>
     </section>

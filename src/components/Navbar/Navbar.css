@@ -16,6 +16,16 @@
   background: rgba(20, 18, 16, 0.82);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
+  transition:
+    background 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.site-header.scrolled .navbar {
+  background: rgba(20, 18, 16, 0.92);
+  border-bottom-color: rgba(243, 235, 224, 0.16);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
 }
 
 .nav-brand {
